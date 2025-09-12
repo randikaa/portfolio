@@ -1,5 +1,7 @@
-import { IconChevronRight } from "@tabler/icons-react";
+import { Button } from "@/components/ui/button";
+import { IconArrowUpRight } from "@tabler/icons-react";
 import localFont from "next/font/local";
+import Image from "next/image";
 
 const spaceGrotesk = localFont({
   src: "../fonts/SpaceGrotesk-Medium.otf",
@@ -13,78 +15,139 @@ const helvetica = localFont({
 const projects = [
   {
     id: 1,
-    name: "E-Commerce Platform",
-    description: "Full-stack development, React.js",
-    icon: "🛍️",
-    bgColor: "bg-blue-500",
+    title: "Flop App",
+    description: "Social media for poker players",
+    bgGradient: "from-purple-500 to-purple-600",
+    mockupType: "mobile",
+    image: "/olee.png", // You'll need to add actual project images
   },
   {
     id: 2,
-    name: "Task Management App",
-    description: "Mobile app, React Native",
-    icon: "📱",
-    bgColor: "bg-gray-800",
+    title: "Lendscape",
+    description: "Lend and Borrow Dashboard",
+    bgGradient: "from-gray-700 to-gray-800",
+    mockupType: "desktop",
+    image: "/project-dashboard.png", // You'll need to add actual project images
   },
   {
     id: 3,
-    name: "Portfolio Website",
-    description: "Landing page, Next.js design",
-    icon: "⚡",
-    bgColor: "bg-orange-500",
+    title: "Tribe.so Admin onboarding",
+    description: "Community platform setup",
+    bgGradient: "from-gray-300 to-gray-400",
+    mockupType: "desktop",
+    image: "/project-admin.png", // You'll need to add actual project images
   },
   {
     id: 4,
-    name: "Analytics Dashboard",
-    description: "Data visualization, Chart.js",
-    icon: "📊",
-    bgColor: "bg-cyan-500",
+    title: "Prompt3 Dashboard",
+    description: "AI prompt management system",
+    bgGradient: "from-gray-600 to-gray-700",
+    mockupType: "desktop",
+    image: "/project-prompt.png", // You'll need to add actual project images
   },
 ];
 
 export default function Projects() {
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12 lg:mt-16">
+    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12 lg:mt-16">
       <div className="flex flex-col">
         {/* Header Section */}
-        <div className="mb-8 sm:mb-12">
-          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 ${spaceGrotesk.className}`}>
-            My Works
-          </h2>
-          <p className={`text-gray-500 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl ${helvetica.className}`}>
-            Discover my portfolio, where purposeful interfaces meet captivating design. My work strives to enhance experiences and inspire.
+        <div className="mb-8 sm:mb-12 text-left">
+          <div className={`flex justify-between`}>
+            <h2
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 ${spaceGrotesk.className}`}
+            >
+              Featured Projects
+            </h2>
+            <Button variant={"outline"}>View More</Button>
+          </div>
+          <p
+            className={`text-gray-600 dark:text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed max-w-3xl ${helvetica.className}`}
+          >
+            A showcase of my recent work, featuring innovative solutions and
+            creative designs across web and mobile platforms.
           </p>
         </div>
 
-        {/* Projects List */}
-        <div className="space-y-4">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {projects.map((project) => (
             <div
               key={project.id}
-              className="group bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer border border-gray-100 hover:border-gray-200"
+              className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br ${project.bgGradient} p-6 sm:p-8 lg:p-10 cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl`}
             >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4 sm:space-x-6">
-                  {/* Project Icon */}
-                  <div className={`w-12 h-12 sm:w-16 sm:h-16 ${project.bgColor} rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-lg`}>
-                    {project.icon}
-                  </div>
-
-                  {/* Project Info */}
-                  <div>
-                    <h3 className={`text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 mb-1 ${spaceGrotesk.className}`}>
-                      {project.name}
-                    </h3>
-                    <p className={`text-gray-500 text-sm sm:text-base ${helvetica.className}`}>
-                      {project.description}
-                    </p>
-                  </div>
+              {/* Header with title and arrow */}
+              <div className="flex items-start justify-between mb-6 relative z-10">
+                <div>
+                  <h3
+                    className={`text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 ${spaceGrotesk.className}`}
+                  >
+                    {project.title}
+                  </h3>
+                  <p
+                    className={`text-white/80 text-sm sm:text-base ${helvetica.className}`}
+                  >
+                    {project.description}
+                  </p>
                 </div>
 
-                {/* Arrow Icon */}
-                <div className="flex-shrink-0">
-                  <IconChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all duration-300" />
+                <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 sm:p-3 group-hover:bg-white/30 transition-all duration-300">
+                  <IconArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:rotate-45 transition-transform duration-300" />
                 </div>
               </div>
+
+              {/* Project Mockup/Preview */}
+              <div className="relative h-48 sm:h-64 lg:h-80 flex items-center justify-center">
+                {project.mockupType === "mobile" ? (
+                  // Mobile mockup placeholder
+                  <div className="relative">
+                    <div className="w-32 sm:w-40 lg:w-48 h-64 sm:h-80 lg:h-96 bg-black rounded-3xl p-2 shadow-2xl transform rotate-12 group-hover:rotate-6 transition-transform duration-500">
+                      <div className="w-full h-full bg-gray-900 rounded-2xl overflow-hidden">
+                        <div className="h-6 bg-gray-800 flex items-center justify-center">
+                          <div className="w-16 h-1 bg-gray-600 rounded-full"></div>
+                        </div>
+                        <div className="p-4 space-y-3">
+                          <div className="h-20 bg-purple-600 rounded-xl"></div>
+                          <div className="space-y-2">
+                            <div className="h-12 bg-gray-700 rounded-lg"></div>
+                            <div className="h-12 bg-gray-700 rounded-lg"></div>
+                            <div className="h-12 bg-gray-700 rounded-lg"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  // Desktop mockup placeholder
+                  <div className="relative w-full max-w-md lg:max-w-lg">
+                    <div className="bg-gray-900 rounded-2xl p-4 shadow-2xl transform -rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                      <div className="bg-gray-800 rounded-lg overflow-hidden">
+                        <div className="h-8 bg-gray-700 flex items-center px-4">
+                          <div className="flex space-x-2">
+                            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                          </div>
+                        </div>
+                        <div className="h-32 sm:h-40 lg:h-48 bg-gradient-to-br from-gray-600 to-gray-800 p-4">
+                          <div className="space-y-3">
+                            <div className="h-4 bg-white/20 rounded w-3/4"></div>
+                            <div className="h-8 bg-white/10 rounded"></div>
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="h-6 bg-white/10 rounded"></div>
+                              <div className="h-6 bg-white/10 rounded"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12 group-hover:scale-150 transition-transform duration-700"></div>
             </div>
           ))}
         </div>

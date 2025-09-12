@@ -46,12 +46,12 @@ export default function Hero() {
             </div>
 
             {/* Name */}
-            <h1 className={`text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 ${spaceGrotesk.className}`}>
+            <h1 className={`text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white ${spaceGrotesk.className}`}>
               Randika Perera
             </h1>
 
             {/* Description */}
-            <p className={`text-base sm:text-lg lg:text-xl ${helvetica.className} text-gray-600 mb-8 max-w-lg mx-auto`}>
+            <p className={`text-base sm:text-lg lg:text-xl ${helvetica.className} text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto`}>
               A passionate developer and tech enthusiast building smart, scalable, and creative solutions.
             </p>
 
@@ -71,7 +71,7 @@ export default function Hero() {
       </div>
 
       {/* Sticky header */}
-      <div className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b transition-all duration-500 ${
+      <div className={`fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 transition-all duration-500 ${
         isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       }`}>
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
@@ -86,10 +86,10 @@ export default function Hero() {
                 className="rounded-full w-10 h-10 sm:w-12 sm:h-12"
               />
               <div>
-                <h2 className={`text-lg sm:text-xl font-bold ${spaceGrotesk.className}`}>
+                <h2 className={`text-lg sm:text-xl font-bold text-gray-900 dark:text-white ${spaceGrotesk.className}`}>
                   Randika Perera
                 </h2>
-                <p className={`text-xs sm:text-sm ${helvetica.className} text-gray-500 hidden sm:block`}>
+                <p className={`text-xs sm:text-sm ${helvetica.className} text-gray-500 dark:text-gray-400 hidden sm:block`}>
                   Developer & Tech Enthusiast
                 </p>
               </div>
