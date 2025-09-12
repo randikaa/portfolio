@@ -1,60 +1,92 @@
-import { Card } from "@/components/ui/card";
-import Image from "next/image";
+import { IconChevronRight } from "@tabler/icons-react";
+import localFont from "next/font/local";
+
+const spaceGrotesk = localFont({
+  src: "../fonts/SpaceGrotesk-Medium.otf",
+});
+
+const helvetica = localFont({
+  src: "../fonts/Helvetica-Bold.ttf",
+});
+
+// Project data
+const projects = [
+  {
+    id: 1,
+    name: "E-Commerce Platform",
+    description: "Full-stack development, React.js",
+    icon: "🛍️",
+    bgColor: "bg-blue-500",
+  },
+  {
+    id: 2,
+    name: "Task Management App",
+    description: "Mobile app, React Native",
+    icon: "📱",
+    bgColor: "bg-gray-800",
+  },
+  {
+    id: 3,
+    name: "Portfolio Website",
+    description: "Landing page, Next.js design",
+    icon: "⚡",
+    bgColor: "bg-orange-500",
+  },
+  {
+    id: 4,
+    name: "Analytics Dashboard",
+    description: "Data visualization, Chart.js",
+    icon: "📊",
+    bgColor: "bg-cyan-500",
+  },
+];
 
 export default function Projects() {
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12 lg:mt-16">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12 lg:mt-16">
       <div className="flex flex-col">
-        <div className="mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold">Projects</h2>
-          <p className="text-gray-600 text-sm sm:text-base mt-2">
-            Here are some of my recent projects and work
+        {/* Header Section */}
+        <div className="mb-8 sm:mb-12">
+          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 ${spaceGrotesk.className}`}>
+            My Works
+          </h2>
+          <p className={`text-gray-500 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl ${helvetica.className}`}>
+            Discover my portfolio, where purposeful interfaces meet captivating design. My work strives to enhance experiences and inspire.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {/* Placeholder for project cards */}
-          <Card className="p-4 sm:p-6 hover:shadow-lg transition-shadow duration-300">
-            <div className="aspect-video bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-              <span className="text-gray-400 text-sm">Project Image</span>
+
+        {/* Projects List */}
+        <div className="space-y-4">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="group bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer border border-gray-100 hover:border-gray-200"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-4 sm:space-x-6">
+                  {/* Project Icon */}
+                  <div className={`w-12 h-12 sm:w-16 sm:h-16 ${project.bgColor} rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-lg`}>
+                    {project.icon}
+                  </div>
+
+                  {/* Project Info */}
+                  <div>
+                    <h3 className={`text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 mb-1 ${spaceGrotesk.className}`}>
+                      {project.name}
+                    </h3>
+                    <p className={`text-gray-500 text-sm sm:text-base ${helvetica.className}`}>
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Arrow Icon */}
+                <div className="flex-shrink-0">
+                  <IconChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all duration-300" />
+                </div>
+              </div>
             </div>
-            <h3 className="font-semibold text-base sm:text-lg mb-2">Project Title</h3>
-            <p className="text-gray-600 text-sm sm:text-base mb-4">
-              Brief description of the project and technologies used.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React</span>
-              <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Node.js</span>
-            </div>
-          </Card>
-          
-          <Card className="p-4 sm:p-6 hover:shadow-lg transition-shadow duration-300">
-            <div className="aspect-video bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-              <span className="text-gray-400 text-sm">Project Image</span>
-            </div>
-            <h3 className="font-semibold text-base sm:text-lg mb-2">Another Project</h3>
-            <p className="text-gray-600 text-sm sm:text-base mb-4">
-              Another project description with different tech stack.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Next.js</span>
-              <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">TypeScript</span>
-            </div>
-          </Card>
-          
-          <Card className="p-4 sm:p-6 hover:shadow-lg transition-shadow duration-300 sm:col-span-2 lg:col-span-1">
-            <div className="aspect-video bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-              <span className="text-gray-400 text-sm">Project Image</span>
-            </div>
-            <h3 className="font-semibold text-base sm:text-lg mb-2">Third Project</h3>
-            <p className="text-gray-600 text-sm sm:text-base mb-4">
-              Description of a third project showcasing different skills.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Java</span>
-              <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">SQL</span>
-            </div>
-          </Card>
+          ))}
         </div>
       </div>
     </div>
