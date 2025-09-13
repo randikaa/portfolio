@@ -7,6 +7,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { IconBolt } from "@tabler/icons-react";
 import localFont from "next/font/local";
 import Image from "next/image";
+import { IconMailFilled } from "@tabler/icons-react";
+import { IconBrandLine } from '@tabler/icons-react';
+import { IconUserPin } from '@tabler/icons-react';
 
 const spaceGrotesk = localFont({
   src: "../fonts/SpaceGrotesk-Medium.otf",
@@ -154,16 +157,16 @@ export default function Contact() {
               <div className="mt-3 text-white/90 text-sm">
                 <div className="space-y-2">
                   <p className="flex items-center gap-2">
-                    <span>📧</span>
-                    <span>[email]@example.com</span>
+                    <span><IconMailFilled/></span>
+                    <span>randikapereraaa@gmail.com</span>
                   </p>
                   <p className="flex items-center gap-2">
-                    <span>📱</span>
-                    <span>+1 (555) 123-4567</span>
+                    <span><IconBrandLine/></span>
+                    <span>+94 (76) 0816-740</span>
                   </p>
                   <p className="flex items-center gap-2">
-                    <span>📍</span>
-                    <span>Your Location</span>
+                    <span><IconUserPin/></span>
+                    <span>Colombo</span>
                   </p>
                 </div>
               </div>
